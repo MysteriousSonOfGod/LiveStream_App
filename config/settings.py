@@ -39,7 +39,11 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-PROJECT_APPS = ["users.apps.UsersConfig"]
+PROJECT_APPS = [
+    "core.apps.CoreConfig",
+    "users.apps.UsersConfig",
+    "channels.apps.ChannelsConfig",
+]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
 
