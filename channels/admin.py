@@ -9,7 +9,17 @@ class ChannelAdmin(admin.ModelAdmin):
 
     list_display = [
         "name",
+        "artist",
+        "resolution",
         "on_air",
     ]
 
-    list_filter = ("on_air",)
+    list_filter = ("on_air", "genre", "resolution")
+
+
+@admin.register(models.Genre, models.Resolution)
+class ItemAdmin(admin.ModelAdmin):
+
+    """Item Admin Definition"""
+
+    pass
