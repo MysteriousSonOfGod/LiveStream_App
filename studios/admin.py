@@ -1,3 +1,10 @@
 from django.contrib import admin
+from . import models
 
-# Register your models here.
+
+@admin.register(models.Studio)
+class StudioAdmin(admin.ModelAdmin):
+
+    """Studio Admin Definition"""
+
+    pass

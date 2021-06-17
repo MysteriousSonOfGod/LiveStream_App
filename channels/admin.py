@@ -5,7 +5,7 @@ from . import models
 @admin.register(models.Channel)
 class ChannelAdmin(admin.ModelAdmin):
 
-    """Channel Admin"""
+    """Channel Admin Definition"""
 
     list_display = [
         "name",

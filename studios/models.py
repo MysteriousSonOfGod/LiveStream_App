@@ -1,3 +1,9 @@
 from django.db import models
+from core import models as core_model
 
-# Create your models here.
+
+class Studio(core_model.TimeStampedModel):
+
+    """Studio Model Definition"""
+
+    pass
