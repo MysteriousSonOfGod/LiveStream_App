@@ -9,6 +9,9 @@ flake8 = "*"
 black = "*"
 pillow = "*"
 django-countries = "*"
+pipwin = "*"
+pyaudio = "*"
+vidstream = "*"
 
 [dev-packages]
 flake8 = "*"
