@@ -43,6 +43,7 @@ PROJECT_APPS = [
     "core.apps.CoreConfig",
     "users.apps.UsersConfig",
     "channels.apps.ChannelsConfig",
+    "studios.apps.StudiosConfig",
 ]
 
 THIRD_PARTY_APPS = [

@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from studios import models as studio_models
 
 
 class User(AbstractUser):
@@ -30,6 +31,7 @@ class User(AbstractUser):
     ]
 
     avatar = models.ImageField(blank=True)
+    nickname = models.CharField(max_length=80, blank=True, null=True)
     bio = models.TextField(blank=True)
     gender = models.CharField(
         max_length=10, choices=GENDER_CHOICES, blank=True, null=True
@@ -43,3 +45,6 @@ class User(AbstractUser):
         max_length=3, choices=CURRENCY_CHOICES, blank=True, null=True
     )
     artist = models.BooleanField(default=False)
+    studio = models.ForeignKey(
+        studio_models.Studio, on_delete=models.CASCADE, null=True
+    )

@@ -1,3 +1,6 @@
+from studios import models
 from django.shortcuts import render
 
-# Create your views here.
+
+def MyStudio(request):
+    return render(request, "studios/mystudio.html")

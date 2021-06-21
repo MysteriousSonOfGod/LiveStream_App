@@ -15,6 +15,7 @@ class CustomAdminUser(UserAdmin):
             {
                 "fields": (
                     "avatar",
+                    "nickname",
                     "gender",
                     "bio",
                     "birthdate",
@@ -28,6 +29,7 @@ class CustomAdminUser(UserAdmin):
 
     list_display = [
         "username",
+        "nickname",
         "gender",
         "language",
         "currency",
