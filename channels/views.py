@@ -10,6 +10,9 @@ def home(request):
 
 
 class VideoCamera(object):
+
+    """Stream View"""
+
     def __init__(self):
         self.video = cv2.VideoCapture(0)
         (self.grabbed, self.frame) = self.video.read()
