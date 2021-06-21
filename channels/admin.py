@@ -10,6 +10,7 @@ class ChannelAdmin(admin.ModelAdmin):
     list_display = [
         "name",
         "artist",
+        "country",
         "resolution",
         "on_air",
     ]

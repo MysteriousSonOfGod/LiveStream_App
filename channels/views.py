@@ -1,3 +1,4 @@
+from channels.models import Channel
 from django.shortcuts import render
 from django.views.decorators import gzip
 from django.http import StreamingHttpResponse
@@ -6,7 +7,8 @@ import threading
 
 
 def home(request):
-    return render(request, "channels/channels_list.html")
+    channels = Channel.objects.all()
+    return render(request, "channels/channels_list.html", {"channels": channels})
 
 
 class VideoCamera(object):

@@ -4,10 +4,19 @@
 
 {% block content %}
 <div class="container">
-    Home
-
-    <div>
-        <a href="{% url 'channels:channel'%}">LIVE STREAM</a>
+    <h2 class="mt-4">현재 진행 중인 버스킹</h2>
+    <div class="col-12">
+        <div class="row d-flex justify-content-between">
+            {% for channel in channels %}
+            <div class="card mt-4" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                <h5 class="card-title">{{channel.name}}</h5>
+                <p class="card-text">아티스트: {{channel.artist}}</p>
+                <a href="{% url 'channels:channel'%}" class="btn btn-outline-dark">LIVE 방송 보기</a>
+            </div>
+        </div>
+        {% endfor %}
     </div>
 </div>
 

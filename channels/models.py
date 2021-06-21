@@ -10,7 +10,7 @@ class Channel(core_model.TimeStampedModel):
 
     name = models.CharField(max_length=140)
     image = models.ImageField(blank=True)
-    country = CountryField(blank_label="(select country)", multiple=True, blank=True)
+    country = CountryField()
     on_air = models.BooleanField(default=False)
     artist = models.ForeignKey(user_model.User, on_delete=models.CASCADE, null=True)
     genre = models.ManyToManyField("Genre", related_name="channels", blank=True)
