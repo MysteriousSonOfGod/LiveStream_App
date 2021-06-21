@@ -34,8 +34,12 @@ class User(AbstractUser):
     gender = models.CharField(
         max_length=10, choices=GENDER_CHOICES, blank=True, null=True
     )
-    birthdate = models.DateField(blank=True)
-    phone = models.CharField(max_length=20, blank=True)
-    language = models.CharField(max_length=2, choices=LANGUAGE_CHOICES, blank=True)
-    currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES, blank=True)
+    birthdate = models.DateField(blank=True, null=True)
+    phone = models.CharField(max_length=20, blank=True, null=True)
+    language = models.CharField(
+        max_length=2, choices=LANGUAGE_CHOICES, blank=True, null=True
+    )
+    currency = models.CharField(
+        max_length=3, choices=CURRENCY_CHOICES, blank=True, null=True
+    )
     artist = models.BooleanField(default=False)
