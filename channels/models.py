@@ -1,10 +1,10 @@
 from django.db import models
 from django_countries.fields import CountryField
-from core import models as core_model
-from users import models as user_model
+from core import models as core_models
+from users import models as user_models
 
 
-class Channel(core_model.TimeStampedModel):
+class Channel(core_models.TimeStampedModel):
 
     """Channel Model Definition"""
 
@@ -12,7 +12,7 @@ class Channel(core_model.TimeStampedModel):
     image = models.ImageField(blank=True)
     country = CountryField()
     on_air = models.BooleanField(default=False)
-    artist = models.ForeignKey(user_model.User, on_delete=models.CASCADE, null=True)
+    artist = models.ForeignKey(user_models.User, on_delete=models.CASCADE, null=True)
     genre = models.ManyToManyField("Genre", related_name="channels", blank=True)
     resolution = models.ForeignKey("Resolution", on_delete=models.SET_NULL, null=True)
 
@@ -20,7 +20,7 @@ class Channel(core_model.TimeStampedModel):
         return self.name
 
 
-class AbstractItem(core_model.TimeStampedModel):
+class AbstractItem(core_models.TimeStampedModel):
 
     """Abstract Item Model Definition"""
 
