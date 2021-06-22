@@ -2,30 +2,24 @@
 
 {% block page_title %}{{user.nickname}}의 스튜디오{% endblock page_title %}
 
-{% block search-bar %}
-{% endblock %}
-
 {% block content %}
 
 <div class="container">
-  {% block side-bar%}
-    <div class="col-3 mt-5">
-        <nav class="navbar navbar-expand-lg navbar-light">
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav d-flex flex-column">
-                <h4>{{user.nickname}}의 스튜디오</h4>
-                  <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'studios:posts'%}">게시판</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
+  <div class="row mt-5">
+    <div class="col-3">
+        <ul class="nav flex-column">
+            <a class="nav-link text-dark" href="{% url 'studios:studio'%}"><h4>{{user.nickname}}의 스튜디오</h4></a>                
+            <li class="nav-item">
+              <a class="nav-link text-dark" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="{% url 'studios:posts'%}">게시판</a>
+            </li>
+        </ul>
     </div>
-    {% endblock %}
-    <div class="col-9"></div>
+    <div class="col-8">
+        <h3>{{user.nickname}}의 스튜디오입니다!</h3>
+    </div>
+</div>
 </div>
 {% endblock %}
