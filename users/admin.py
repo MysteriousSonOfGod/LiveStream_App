@@ -22,6 +22,7 @@ class CustomAdminUser(UserAdmin):
                     "language",
                     "currency",
                     "artist",
+                    "channel",
                 )
             },
         ),
@@ -34,6 +35,7 @@ class CustomAdminUser(UserAdmin):
         "language",
         "currency",
         "artist",
+        "channel",
     ]
 
     list_filter = UserAdmin.list_filter + ("artist",)

@@ -1,5 +1,7 @@
+import channels
 from studios import models
 from django.shortcuts import render
+from channels import models as channel_models
 
 
 def MyStudio(request):

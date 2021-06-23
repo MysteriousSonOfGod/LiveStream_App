@@ -50,3 +50,6 @@ class User(AbstractUser):
     studio = models.ForeignKey(
         studio_models.Studio, on_delete=models.CASCADE, null=True
     )
+    channel = models.ForeignKey(
+        channel_models.Channel, on_delete=models.CASCADE, null=True
+    )

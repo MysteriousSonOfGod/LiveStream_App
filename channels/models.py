@@ -12,7 +12,6 @@ class Channel(core_models.TimeStampedModel):
     image = models.ImageField(blank=True)
     country = CountryField()
     on_air = models.BooleanField(default=False)
-    artist = models.ForeignKey("users.User", on_delete=models.CASCADE, null=True)
     genre = models.ManyToManyField("Genre", blank=True)
     resolution = models.ForeignKey("Resolution", on_delete=models.SET_NULL, null=True)
 

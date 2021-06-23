@@ -34,7 +34,13 @@
             <p>{{user.bio}}</p>
             <hr>
             <h5 class="card-title">선호 장르</h5>
-            <p>{{channel.genre}}</p>
+            <p>
+              {% for g in user.channel.genre.all %}
+                {{g}}.
+              {% endfor %}
+            </p>
+            <h5 class="card-title">생일</h5>
+            <p>{{user.birthdate}}</p>
             
             <div class="d-flex justify-content-end">
               <a href="#" class="btn btn-outline-dark card-link">프로필 수정</a>
