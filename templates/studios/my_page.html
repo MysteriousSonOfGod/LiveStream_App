@@ -30,7 +30,7 @@
             <div>
               <h5 class="card-title">{{user.avatar}}</h5>
               <h5 class="card-title">
-                {{user.nickname}} |
+                {{user.nickname}}
                 {% if user.artist %}
                 BUSKER
                 {% endif %}
@@ -55,13 +55,13 @@
         {% endif %}
 
         <h3 class="mt-5">내 채널</h3>
-        {% if user.channel %}
+        {% if user.is_authenticated %}
         <div class="card mt-4" style="width: 100%;">
           <div class="card-body">
             <div>
               <h5 class="card-title">{{user.avatar}}</h5>
               <h5 class="card-title">
-                채널이름: {{user.channel.name}}
+                채널이름: {{user.channels.name}}
               </h5>
               <h5>장르: 
                 {% for g in user.channel.genre.all %}
