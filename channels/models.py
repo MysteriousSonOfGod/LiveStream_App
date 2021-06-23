@@ -9,7 +9,7 @@ class Channel(core_models.TimeStampedModel):
     """Channel Model Definition"""
 
     name = models.CharField(max_length=140)
-    image = models.ImageField(blank=True)
+    image = models.ImageField(upload_to="channel_photos", blank=True)
     country = CountryField()
     on_air = models.BooleanField(default=False)
     genre = models.ManyToManyField("Genre", blank=True)

@@ -6,7 +6,7 @@ from django.views.generic import ListView
 
 
 def MyStudio(request):
-    return render(request, "studios/mystudio.html")
+    return render(request, "studios/my_studio.html")
 
 
 def my_page(request):
