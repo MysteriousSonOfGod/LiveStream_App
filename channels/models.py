@@ -15,7 +15,11 @@ class Channel(core_models.TimeStampedModel):
     genre = models.ManyToManyField("Genre", blank=True)
     resolution = models.ForeignKey("Resolution", on_delete=models.SET_NULL, null=True)
     channel_host = models.ForeignKey(
-        "users.User", related_name="channel", on_delete=models.CASCADE, null=True
+        "users.User",
+        related_name="channel",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
     )
 
     def __str__(self):

@@ -16,15 +16,16 @@
                 </li>
             </ul>
         </div>
-        <div class="col-8">
+        <div class="col-9">
             <h3>게시글 목록</h3>
             <div>
               <table class="table table-hover mt-3">
                   <thead>
                     <tr>
                       <th scope="col" style="width: 20%;">작성자</th>
-                      <th scope="col" style="width: 55%;">제목</th>
+                      <th scope="col" style="width: 45%;">제목</th>
                       <th scope="col" style="width: 25%;">작성일자</th>
+                      <th scope="col" style="width: 5%;"></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -33,11 +34,15 @@
                       <td>{{post.writer.nickname}}</td>
                       <td>{{post.title}}</td>
                       <td>{{post.created}}</td>
+                      <td><a href="{% url 'studios:post_detail' post.id %}">보기</a></td>
                     </tr>
                   {% endfor %}
                   </tbody>
                 </table>
-                <nav aria-label="Page navigation example">
+                <div class="d-flex justify-content-end">
+                  <a class="btn btn-outline-dark", href="{% url 'studios:post_new' %}">새 글 쓰기</a>
+                </div>
+                <nav class="d-flex justify-content-center" aria-label="Page navigation example">
                   <ul class="pagination">
                     {% if page_obj.has_previous %}
                     <li class="page-item"><a class="page-link" href="?page={{page_obj.previous_page_number}}">이전</a></li>

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block page_title %}{{user.nickname}}의 스튜디오{% endblock page_title %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-3">
+            <ul class="nav flex-column">
+                <a class="nav-link text-dark" href="{% url 'studios:studio'%}"><h4>{{user.nickname}}의 스튜디오</h4></a>                
+                <li class="nav-item">
+                  <a class="nav-link text-dark" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-dark" href="{% url 'studios:posts'%}">게시판</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-9">
+            <form action="{% url 'studios:post_create' %}" method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label"><h5>게시글 제목</h5></label>
+                    <input name="title" type="text" class="form-control" id="text">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">내용</label>
+                    <textarea name="body" class="form-control" id="body" rows="20"></textarea>
+                </div>
+                <button class="btn btn-outline-dark" type="submit">작성하기</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
