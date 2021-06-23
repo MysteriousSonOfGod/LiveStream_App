@@ -12,6 +12,7 @@ django-countries = "*"
 pipwin = "*"
 pyaudio = "*"
 vidstream = "*"
+django-seed = "*"
 
 [dev-packages]
 flake8 = "*"

@@ -27,8 +27,16 @@
         {% if user.is_authenticated %}
         <div class="card mt-4" style="width: 100%;">
           <div class="card-body">
-            <h5 class="card-title">{{user.avatar}}</h5>
-            <h5 class="card-title">{{user.nickname}} / {{user.email}}</h5>
+            <div>
+              <h5 class="card-title">{{user.avatar}}</h5>
+              <h5 class="card-title">
+                {{user.nickname}} |
+                {% if user.artist %}
+                BUSKER
+                {% endif %}
+              </h5>
+              <h5>{{user.email}}</h5>
+            </div>
             <hr>
             <h5 class="card-title">소개글</h5>
             <p>{{user.bio}}</p>
@@ -39,16 +47,34 @@
                 {{g}}.
               {% endfor %}
             </p>
-            <h5 class="card-title">생일</h5>
-            <p>{{user.birthdate}}</p>
-            
             <div class="d-flex justify-content-end">
               <a href="#" class="btn btn-outline-dark card-link">프로필 수정</a>
             </div>
           </div>
         </div>
         {% endif %}
-    </div>
+
+        <h3 class="mt-5">내 채널</h3>
+        {% if user.channel %}
+        <div class="card mt-4" style="width: 100%;">
+          <div class="card-body">
+            <div>
+              <h5 class="card-title">{{user.avatar}}</h5>
+              <h5 class="card-title">
+                채널이름: {{user.channel.name}}
+              </h5>
+              <h5>장르: 
+                {% for g in user.channel.genre.all %}
+                  {{g}}
+                {% endfor %}
+              </h5>
+            </div>
+            <div class="d-flex justify-content-end">
+              <a href="#" class="btn btn-outline-dark card-link">채널관리</a>
+            </div>
+          </div>
+        </div>
+        {% endif %}
 </div>
 </div>
 {% endblock %}

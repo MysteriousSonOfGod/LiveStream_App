@@ -1,17 +1,29 @@
+from django.db import close_old_connections
 import channels
 from studios import models
 from django.shortcuts import render
-from channels import models as channel_models
+from django.views.generic import ListView
 
 
 def MyStudio(request):
     return render(request, "studios/mystudio.html")
 
 
-def Posts(request):
-    posts = models.Post.objects.all()
-    return render(request, "studios/posts_list.html", {"posts": posts})
+# def Posts(request):
+#     posts = models.Post.objects.all()
+#     return render(request, "studios/posts_list.html", {"posts": posts})
 
 
 def my_page(request):
     return render(request, "studios/my_page.html")
+
+
+class PostView(ListView):
+
+    """PostView Definition"""
+
+    model = models.Post
+    paginate_by = 10
+    paginate_orphans = 5
+    ordering = "created"
+    page_kwarg = "page"
