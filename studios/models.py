@@ -12,7 +12,7 @@ class Studio(core_models.TimeStampedModel):
 
     name = models.CharField(max_length=200, null=True)
     desc = models.TextField(blank=True)
-    avatar = ImageField(blank=True)
+    image = ImageField(blank=True)
     posts = models.ManyToManyField("Post", related_name="posts", blank=True)
 
 
