@@ -12,8 +12,8 @@ class Studio(core_models.TimeStampedModel):
 
     name = models.CharField(max_length=200, null=True)
     desc = models.TextField(blank=True)
-    image = ImageField(blank=True)
-    posts = models.ManyToManyField("Post", related_name="posts", blank=True)
+    image = ImageField(upload_to="studio_photos", blank=True)
+    studio_host = models.ForeignKey("users.User", on_delete=models.CASCADE, null=True)
 
 
 class Post(core_models.TimeStampedModel):
@@ -25,3 +25,6 @@ class Post(core_models.TimeStampedModel):
         "users.User", related_name="rooms", on_delete=models.CASCADE, null=True
     )
     body = models.TextField(blank=True)
+    p_studio = models.ForeignKey(
+        "Studio", related_name="posts", on_delete=models.CASCADE, blank=True, null=True
+    )

@@ -14,6 +14,7 @@ class Channel(core_models.TimeStampedModel):
     on_air = models.BooleanField(default=False)
     genre = models.ManyToManyField("Genre", blank=True)
     resolution = models.ForeignKey("Resolution", on_delete=models.SET_NULL, null=True)
+    channel_host = models.ForeignKey("users.User", on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.name

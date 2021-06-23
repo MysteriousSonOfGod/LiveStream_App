@@ -21,8 +21,7 @@ class CustomAdminUser(UserAdmin):
                     "birthdate",
                     "language",
                     "currency",
-                    "artist",
-                    "channel",
+                    "busker",
                 )
             },
         ),
@@ -34,8 +33,7 @@ class CustomAdminUser(UserAdmin):
         "gender",
         "language",
         "currency",
-        "artist",
-        "channel",
+        "busker",
     ]
 
-    list_filter = UserAdmin.list_filter + ("artist",)
+    list_filter = UserAdmin.list_filter + ("busker",)
