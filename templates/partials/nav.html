@@ -6,7 +6,6 @@
       </button>
       <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link" href="#">채널</a>
           {% if user.is_authenticated %}
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -20,6 +19,7 @@
             </li>
           {% else %}
             <a class="nav-link" href="{% url "users:login" %}">로그인</a>
+            <a class="nav-link" href="{% url "users:login" %}">회원가입</a>
           {% endif %}
         </div>
       </div>
