@@ -13,9 +13,9 @@
                 {{user.nickname}}
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" href="{% url "studios:studio" %}">내 스튜디오</a></li>
-                <li><a class="dropdown-item" href="#">마이페이지</a></li>
-                <li><a class="dropdown-item" href="{% url "users:logout" %}">로그아웃</a></li>
+                <li><a class="dropdown-item" href="{% url 'studios:studio' %}">내 스튜디오</a></li>
+                <li><a class="dropdown-item" href="{% url 'studios:my_page' %}">마이페이지</a></li>
+                <li><a class="dropdown-item" href="{% url 'users:logout' %}">로그아웃</a></li>
               </ul>
             </li>
           {% else %}

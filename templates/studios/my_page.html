@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block page_title %}마이페이지{% endblock page_title %}
+
+{% block content %}
+
+{% block my_studio %}
+{% endblock my_studio %}
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-3">
+        <ul class="nav flex-column">
+            <a class="nav-link text-dark" href="{% url 'studios:my_page'%}"><h5>마이페이지</h5></a>                
+            <li class="nav-item">
+              <a class="nav-link text-dark" aria-current="page" href="{% url 'studios:my_page'%}">회원정보</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" aria-current="page" href="#">구독한 버스커 목록</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" aria-current="page" href="#">문의내역</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-9">
+        <h3>내 프로필</h3>
+        {% if user.is_authenticated %}
+        <div class="card mt-4" style="width: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">{{user.avatar}}</h5>
+            <h5 class="card-title">{{user.nickname}} / {{user.email}}</h5>
+            <hr>
+            <h5 class="card-title">소개글</h5>
+            <p>{{user.bio}}</p>
+            <hr>
+            <h5 class="card-title">선호 장르</h5>
+            <p>{{channel.genre}}</p>
+            
+            <div class="d-flex justify-content-end">
+              <a href="#" class="btn btn-outline-dark card-link">프로필 수정</a>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+</div>
+{% endblock %}

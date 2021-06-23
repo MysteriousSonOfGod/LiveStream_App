@@ -1,6 +1,8 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+import channels
 from studios import models as studio_models
+from channels import models as channel_models
 
 
 class User(AbstractUser):
