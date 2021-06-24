@@ -21,6 +21,7 @@
             <div class="d-flex justify-content-between">
                 <p>작성자: {{post.writer.nickname}}</p>
                 <p style="margin-bottom: 0;">작성일자: {{post.created}}</p>
+                <a href="{% url 'studios:post_edit' %}">게시글 수정</a>
             </div>
             <hr>
             <p>{{post.body}}</p>

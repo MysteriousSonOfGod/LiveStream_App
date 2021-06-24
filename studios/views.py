@@ -45,3 +45,18 @@ def create(request):
     new_post.created = timezone.now()
     new_post.save()
     return redirect("studios:post_detail", new_post.id)
+
+
+def edit(request, id):
+    edit_post = models.Post.objects.get(id=id)
+    return render(request, "studios/post_edit", {"post": edit_post})
+
+
+def update(request, id):
+    update_post = models.Post.objects.get(id=id)
+    update_post.title = request.POST["title"]
+    update_post.writer = request.user
+    update_post.body = request.POST["body"]
+    update_post.updated = timezone.now()
+    update_post.save()
+    return redirect("studios:post_detail", update_post.id)
