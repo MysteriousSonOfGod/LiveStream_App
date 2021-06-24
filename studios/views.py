@@ -28,8 +28,8 @@ class PostView(ListView):
     context_object_name = "posts"
 
 
-def detail(request, post_id):
-    post = get_object_or_404(models.Post, pk=post_id)
+def detail(request, id):
+    post = get_object_or_404(models.Post, id=id)
     return render(request, "studios/post_detail.html", {"post": post})
 
 
@@ -44,12 +44,14 @@ def create(request):
     new_post.body = request.POST["body"]
     new_post.created = timezone.now()
     new_post.save()
+
     return redirect("studios:post_detail", new_post.id)
 
 
 def edit(request, id):
     edit_post = models.Post.objects.get(id=id)
-    return render(request, "studios/post_edit", {"post": edit_post})
+
+    return render(request, "studios/post_edit.html", {"post": edit_post})
 
 
 def update(request, id):
@@ -59,4 +61,11 @@ def update(request, id):
     update_post.body = request.POST["body"]
     update_post.updated = timezone.now()
     update_post.save()
+
     return redirect("studios:post_detail", update_post.id)
+
+
+def delete(request, id):
+    delete_post = models.Post.objects.get(id=id)
+    delete_post.delete()
+    return redirect("studios:posts")
