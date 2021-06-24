@@ -7,6 +7,7 @@ from django.core.paginator import Paginator
 from django.views.generic import ListView
 from django.utils import timezone
 from . import models
+import studios
 
 
 def MyStudio(request):
