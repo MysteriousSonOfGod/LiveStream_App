@@ -10,8 +10,9 @@ from . import models
 import studios
 
 
-def MyStudio(request):
-    return render(request, "studios/my_studio.html")
+def my_studio(request):
+    category = models.Category.objects.all()
+    return render(request, "studios/my_studio.html", {"category": category})
 
 
 def my_page(request):

@@ -6,6 +6,26 @@ from core import models as core_models
 from users import models as user_models
 
 
+class StudioAbstractItem(core_models.TimeStampedModel):
+
+    """Abstract Item Model Definition"""
+
+    name = models.CharField(max_length=80)
+
+    class meta:
+        abstract = True
+
+    def __str__(self):
+        return self.name
+
+
+class Category(StudioAbstractItem):
+
+    """Category Model Definition"""
+
+    pass
+
+
 class Post(core_models.TimeStampedModel):
 
     """Post Model Definition"""
@@ -17,6 +37,9 @@ class Post(core_models.TimeStampedModel):
     body = models.TextField(blank=True)
     p_studio = models.ForeignKey(
         "Studio", related_name="posts", on_delete=models.CASCADE, blank=True, null=True
+    )
+    category = models.ForeignKey(
+        "Post", related_name="posts", on_delete=models.SET_NULL, null=True
     )
 
     def __str__(self):

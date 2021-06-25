@@ -5,7 +5,7 @@ from . import views
 app_name = "studios"
 
 urlpatterns = [
-    path("", views.MyStudio, name="studio"),
+    path("", views.my_studio, name="studio"),
     path("posts", views.PostView.as_view(), name="posts"),
     path("posts/<str:id>", views.detail, name="post_detail"),
     path("posts/new/", views.new, name="post_new"),

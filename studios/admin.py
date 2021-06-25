@@ -3,6 +3,14 @@ from django.utils.safestring import mark_safe
 from . import models
 
 
+@admin.register(models.Category)
+class CategoryAdmin(admin.ModelAdmin):
+
+    """Category Admin Definition"""
+
+    list_display = ("name",)
+
+
 @admin.register(models.Post)
 class PostAdmin(admin.ModelAdmin):
 
