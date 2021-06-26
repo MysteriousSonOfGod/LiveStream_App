@@ -1,3 +1,4 @@
+from typing import Tuple
 from django.db import models
 from django_countries.fields import CountryField
 from core import models as core_models
@@ -9,7 +10,7 @@ class Channel(core_models.TimeStampedModel):
     """Channel Model Definition"""
 
     name = models.CharField(max_length=140)
-    image = models.ImageField(upload_to="channel_photos", blank=True)
+    image = models.ImageField(upload_to="channel_photos", blank=True, null=True)
     country = CountryField()
     on_air = models.BooleanField(default=False)
     genre = models.ManyToManyField("Genre", blank=True)

@@ -52,7 +52,7 @@ class Studio(core_models.TimeStampedModel):
 
     name = models.CharField(max_length=200, null=True)
     desc = models.TextField(blank=True)
-    image = ImageField(upload_to="studio_photos", blank=True, null=True)
+    image = models.ImageField(upload_to="studio_photos", blank=True, null=True)
     studio_host = models.ForeignKey("users.User", on_delete=models.CASCADE, null=True)
 
     def __str__(self):
