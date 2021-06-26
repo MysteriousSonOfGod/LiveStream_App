@@ -42,7 +42,13 @@ class SignUpView(FormView):
         form.save()
         email = form.cleaned_data.get("email")
         password = form.cleaned_data.get("password")
-        user = authenticate(self.request, username=email, password=password)
+        nickname = form.cleaned_data.get("nickname")
+        user = authenticate(
+            self.request,
+            username=email,
+            nickname=nickname,
+            password=password,
+        )
         if user is not None:
             login(self.request, user)
         return super().form_valid(form)

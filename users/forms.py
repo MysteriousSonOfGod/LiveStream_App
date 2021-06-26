@@ -1,5 +1,8 @@
 from re import S
 from django import forms
+from django.core.exceptions import ValidationError
+from django.forms import ModelForm
+from django.db.models import fields
 from . import models
 
 
@@ -21,28 +24,25 @@ class LoginForm(forms.Form):
             self.add_error("email", forms.ValidationError("해당 유저가 존재하지 않습니다."))
 
 
-class SignUpForm(forms.Form):
+class SignUpForm(forms.ModelForm):
+    class Meta:
+        model = models.User
+        fields = [
+            "first_name",
+            "last_name",
+            "email",
+            "gender",
+        ]
 
-    first_name = forms.CharField(max_length=80)
-    last_name = forms.CharField(max_length=80)
     nickname = forms.CharField(max_length=80)
-    email = forms.EmailField()
     password = forms.CharField(widget=forms.PasswordInput)
     password1 = forms.CharField(widget=forms.PasswordInput, label="Confirm Password")
-
-    def clean_email(self):
-        email = self.cleaned_data.get("email")
-        try:
-            models.User.objects.get(email=email)
-            raise forms.ValidationError("이미 사용 중인 이메일입니다.")
-        except models.User.DoesNotExist:
-            return email
 
     def clean_nickname(self):
         nickname = self.cleaned_data.get("nickname")
         try:
             models.User.objects.get(nickname=nickname)
-            raise forms.ValidationError("이미 사용 중인 별명입니다.")
+            raise forms.ValidationError("이미 사용 중인 닉네임입니다.")
         except models.User.DoesNotExist:
             return nickname
 
@@ -56,13 +56,10 @@ class SignUpForm(forms.Form):
             return password
 
     def save(self):
-        first_name = self.cleaned_data.get("first_name")
-        last_name = self.cleaned_data.get("last_name")
-        nickname = self.cleaned_data.get("nickname")
-        email = self.cleaned_data.get("email")
+        username = self.cleaned_data.get("email")
         password = self.cleaned_data.get("password")
-        user = models.User.objects.create_user(email, email, password)
-        user.first_name = first_name
-        user.last_name = last_name
-        user.nickname = nickname
+        user = super().save(commit=False)
+        user.username = username
+        user.set_password(password)
+        user.nickname = self.cleaned_data.get("nickname")
         user.save()

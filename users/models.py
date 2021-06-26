@@ -41,9 +41,17 @@ class User(AbstractUser):
     birthdate = models.DateField(blank=True, null=True)
     phone = models.CharField(max_length=20, blank=True, null=True)
     language = models.CharField(
-        max_length=2, choices=LANGUAGE_CHOICES, blank=True, null=True
+        max_length=2,
+        choices=LANGUAGE_CHOICES,
+        blank=True,
+        null=True,
+        default=LANGUAGE_KOREAN,
     )
     currency = models.CharField(
-        max_length=3, choices=CURRENCY_CHOICES, blank=True, null=True
+        max_length=3,
+        choices=CURRENCY_CHOICES,
+        blank=True,
+        null=True,
+        default=CURRENCY_KRW,
     )
     busker = models.BooleanField(default=False)
